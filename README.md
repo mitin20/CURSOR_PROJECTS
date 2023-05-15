@@ -35,8 +35,8 @@ For all the features, the AI can see the code in your immediate file. To have it
 ## Models
 
 You can use Cursor with two AI models. 
-* GPT-3.5: Fast, worse at coding. Available to all users. 
-* GPT-4: Very good at coding. Available to pro subscribers.
+* GPT-3.5: Reliable for simple queries. Fast. Available to all users. 
+* GPT-4: Very good at coding. Slow. Available to pro subscribers.
 
 ## Help!
 
