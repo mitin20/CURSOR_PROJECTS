@@ -1,11 +1,6 @@
-To install:
+## Getting Started
 
 ```
 npm i
-```
-
-To run:
-
-```
 npm start
 ```
