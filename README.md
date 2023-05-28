@@ -40,4 +40,4 @@ You can use Cursor with two AI models.
 
 ## Help!
 
-If you run into any trouble or have any feedback, feel free to reach out at admin@cursor.so.
+If you run into any trouble or have any feedback, feel free to reach out at hi@cursor.so.
