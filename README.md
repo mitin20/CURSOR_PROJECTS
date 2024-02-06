@@ -3,7 +3,7 @@
 Welcome to Cursor. Here are the basics:
 
 * Highlight code. Hit Cmd+K to prompt an edit.
-* Try typing code. Cursor will suggest autocompletes and entire diffs.
+* Try typing code. Cursor will suggest autocompletes and entire diffs. Hit Tab to accept.
 * Open chat by clicking the right-bar button (on the top-right).
   - Highlight code and hit Cmd+Shift+L to focus the AI on particular pieces of code
   - Use @ to import files or documentation
