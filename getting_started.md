@@ -3,7 +3,7 @@
 Welcome to Cursor! Here are the basics:
 
 * Highlight code
-  - Hit Cmd+K or Cmd+L to prompt an edit or start a chat.
+  - Hit Cmd+K to prompt an edit.
 * Try typing
   - When you see a suggested diff or autocomplete, hit Tab to accept.
 * Open chat with Cmd+L
