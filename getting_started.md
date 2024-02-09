@@ -2,11 +2,12 @@
 
 Welcome to Cursor! Here are the basics:
 
-* Highlight code
-  - Hit Cmd+K to prompt an edit.
-* Try typing
-  - When you see a suggested diff or autocomplete, hit Tab to accept.
-* Open chat with Cmd+L
+* Prompt an edit
+  - Highlight code and hit Cmd+K
+* Accept an autocomplete
+  - Try typing and hit Tab when you see a suggestino
+* Ask a question
+  - Use Cmd+L to open the chat 
   - Use @ to import files or documentation
   - Highlight code and hit Cmd+Shift+L to focus the AI on particular pieces of code
   - Try the "with codebase" button to ask about the entire repo
