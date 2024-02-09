@@ -4,8 +4,8 @@ Welcome to Cursor! Here are the basics:
 
 * Prompt an edit
   - Highlight code and hit Cmd+K
-* Accept an inline suggestion
-  - Try typing and hit Tab when you see a suggested change
+* Accept an autocomplete
+  - Try typing and hit Tab when you see a suggestion
 * Ask a question
   - Use Cmd+L to open the chat 
   - Use @ to import files or documentation
