@@ -1,0 +1,43 @@
+name: CURSOR PROJECTS
+jobs:
+  Job1:
+    name: Build
+    steps:
+      - type: node-js
+        shell-script: npm install
+        docker-image: node:lts
+    runs-on: Linux-Medium
+  Job2:
+    name: Test
+    runs-on: Linux-Medium
+    steps:
+      - type: node-js
+        shell-script: |-
+          npm install -g mocha
+          npm install --save-dev start-server-and-test
+        docker-image: node:lts
+        name: Install Prerequisites
+      - type: node-js
+        shell-script: npx start-test 3000
+        docker-image: node:lts
+        name: Run tests
+    dependencies:
+      - Job1
+  DockerBuildPush:
+    name: DockerBuild&Push
+    runs-on: Linux-Medium
+    steps:
+      - type: script
+        script-content: docker build -t hello-world-node .
+        name: Build
+      - type: script
+        name: Push
+        script-content: |-
+          docker tag hello-world-node:latest mitin20/hello-world-node:latest
+          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} docker.io
+          docker push mitin20/hello-world-node:latest
+    dependencies:
+      - Job2
+secrets:
+  DOCKER_USERNAME: credentialsJSON:aeff4c24-9874-4e1e-ae49-5cce5a63039f
+  DOCKER_PASSWORD: credentialsJSON:c7c87923-d5ac-4a9a-8f8d-cbd6748222ce
