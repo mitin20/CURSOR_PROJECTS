@@ -1,0 +1,22 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "A simple Node.js Hello World application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.6.0",
+    "start-server-and-test": "^2.0.4"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-mitin20:mitin20/CURSOR_PROJECTS.git"
+  },
+  "keywords": []
+}
