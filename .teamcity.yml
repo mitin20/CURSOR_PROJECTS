@@ -34,7 +34,7 @@ jobs:
         name: Push
         script-content: |-
           docker tag hello-world-node:latest mitin20/hello-world-node:latest
-          docker login -u env.DOCKER_USERNAME -p env.DOCKER_PASSWORD docker.io
+          docker login -u %env.DOCKER_USERNAME% -p %env.DOCKER_PASSWORD% docker.io
           docker push mitin20/hello-world-node:latest
     dependencies:
       - Job2
