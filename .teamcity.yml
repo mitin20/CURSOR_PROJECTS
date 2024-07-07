@@ -86,7 +86,9 @@ jobs:
       - type: node-js
         shell-script: |-
           # Monitor local projects
-          npm install -g snyk 
+          npm install -g snyk
+          snyk auth %SNYK_TOKEN%
+          snyk test 
           snyk monitor
         docker-image: node:lts
         name: Scan
