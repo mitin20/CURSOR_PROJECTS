@@ -7,6 +7,8 @@ jobs:
         shell-script: npm install
         docker-image: node:lts
     runs-on: Linux-Medium
+    dependencies:
+      - CodeScan
   Test:
     name: Test
     runs-on: Linux-Medium
@@ -77,6 +79,17 @@ jobs:
             cves mitin20/hello-world-node:latest --exit-code --only-severity critical,high
     dependencies:
       - DockerBuildPush
+  CodeScan:
+    name: Code Scan
+    runs-on: Linux-Medium
+    steps:
+      - type: node-js
+        shell-script: |-
+          # Monitor local projects
+          npm install -g snyk 
+          snyk monitor
+        docker-image: node:lts
+        name: Scan
 secrets:
   DOCKER_USERNAME: credentialsJSON:aeff4c24-9874-4e1e-ae49-5cce5a63039f
   DOCKER_PASSWORD: credentialsJSON:c7c87923-d5ac-4a9a-8f8d-cbd6748222ce
