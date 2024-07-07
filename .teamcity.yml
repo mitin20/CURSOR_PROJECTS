@@ -63,6 +63,8 @@ jobs:
 
           # Build docker-scout-cli
 
+          cd scout
+
           docker build --build-arg DOCKER_USERNAME=%DOCKER_USERNAME% --build-arg
           DOCKER_PASSWORD=%DOCKER_PASSWORD% -t my-scout-cli .
 
