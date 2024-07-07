@@ -1,13 +1,13 @@
 name: CURSOR PROJECTS
 jobs:
-  Job1:
+  Build:
     name: Build
     steps:
       - type: node-js
         shell-script: npm install
         docker-image: node:lts
     runs-on: Linux-Medium
-  Job2:
+  Test:
     name: Test
     runs-on: Linux-Medium
     steps:
@@ -22,9 +22,9 @@ jobs:
         docker-image: node:lts
         name: Run tests
     dependencies:
-      - Job1
+      - Build
   DockerBuildPush:
-    name: DockerBuild&Push
+    name: Docker Build & Push
     runs-on: Linux-Medium
     steps:
       - type: script
@@ -37,7 +37,22 @@ jobs:
           docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD% docker.io
           docker push mitin20/hello-world-node:latest
     dependencies:
-      - Job2
+      - Test
+  DockerScan:
+    name: Docker Scan
+    runs-on: Linux-Medium
+    steps:
+      - type: script
+        name: Scan image
+        script-content: |-
+          # Install the Docker Scout CLI
+          curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
+          # Login to Docker Hub required for Docker Scout CLI
+          docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%
+          # Get a CVE report for the built image and fail the pipeline when critical or high CVEs are detected
+          docker scout cves mitin20/hello-world-node:latest --exit-code --only-severity critical,high
+    dependencies:
+      - DockerBuildPush
 secrets:
   DOCKER_USERNAME: credentialsJSON:aeff4c24-9874-4e1e-ae49-5cce5a63039f
   DOCKER_PASSWORD: credentialsJSON:c7c87923-d5ac-4a9a-8f8d-cbd6748222ce
