@@ -70,7 +70,7 @@ jobs:
 
           # Run docker-scout-cli
 
-          docker run -it \
+          docker run \
             -e DOCKER_SCOUT_HUB_USER=%DOCKER_USERNAME% \
             -e DOCKER_SCOUT_HUB_PASSWORD=%DOCKER_PASSWORD% \
             my-scout-cli \
