@@ -18,3 +18,12 @@ docker run \
   -e DOCKER_SCOUT_HUB_PASSWORD=%DOCKER_PASSWORD% \
   docker/scout-cli \
   cves mitin20/hello-world-node:latest --exit-code --only-severity critical,high
+
+
+# code scan
+
+## Monitor local projects
+npm install -g snyk 
+snyk auth %SNYK_TOKEN%
+snyk monitor
+
