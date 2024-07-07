@@ -51,14 +51,7 @@ jobs:
           https://raw.githubusercontent.com/docker/scout-cli/main/install.sh |
           sh -s --
 
-          # Install Scout Alt Way
-
-          #curl -fsSL
-          https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o
-          install-scout.sh
-
-          #sh install-scout.sh# Login to Docker Hub required for Docker Scout
-          CLI
+          # Login to Docker Hub required for Docker Scout CLI
 
           #docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%
 
@@ -75,37 +68,11 @@ jobs:
 
           # Run docker-scout-cli
 
-          #docker run my-scout-cli
-        dockerfile-source: >-
-          # Use the official Docker Scout CLI image as the base image
-
-          FROM docker/scout-cli
-
-
-          # Define build-time arguments
-
-          ARG DOCKER_USERNAME
-
-          ARG DOCKER_PASSWORD
-
-
-          # Set environment variables from build-time arguments
-
-          ENV DOCKER_SCOUT_HUB_USER=${DOCKER_USERNAME}
-
-          ENV DOCKER_SCOUT_HUB_PASSWORD=${DOCKER_PASSWORD}
-
-
-          # Define the command to run when the container starts
-
-          CMD ["docker", "scout", "cves", "mitin20/hello-world-node:latest",
-          "--exit-code", "--only-severity", "critical,high"]
-
-
-          # Build using ARGS
-
-          #docker build --build-arg DOCKER_USERNAME=%DOCKER_USERNAME%
-          --build-arg DOCKER_PASSWORD=%DOCKER_PASSWORD% -t my-scout-cli .
+          docker run -it \
+            -e DOCKER_SCOUT_HUB_USER=%DOCKER_USERNAME% \
+            -e DOCKER_SCOUT_HUB_PASSWORD=%DOCKER_PASSWORD% \
+            docker/scout-cli \
+            cves mitin20/hello-world-node:latest --exit-code --only-severity critical,high
     dependencies:
       - DockerBuildPush
 secrets:
