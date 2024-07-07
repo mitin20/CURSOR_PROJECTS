@@ -10,7 +10,7 @@ ENV DOCKER_SCOUT_HUB_USER=${DOCKER_USERNAME}
 ENV DOCKER_SCOUT_HUB_PASSWORD=${DOCKER_PASSWORD}
 
 # Define the command to run when the container starts
-CMD ["docker", "scout", "cves", "mitin20/hello-world-node:latest","--exit-code", "--only-severity", "critical,high"]
+CMD ["cves", "mitin20/hello-world-node:latest","--exit-code", "--only-severity", "critical,high"]
 
 # Build using ARGS
 #docker build --build-arg DOCKER_USERNAME=%DOCKER_USERNAME% --build-arg DOCKER_PASSWORD=%DOCKER_PASSWORD% -t my-scout-cli .
