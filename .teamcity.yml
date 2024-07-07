@@ -63,17 +63,17 @@ jobs:
 
           # Build docker-scout-cli
 
-          cd scout
+          #cd scout
 
-          docker build --build-arg DOCKER_USERNAME=%DOCKER_USERNAME% --build-arg
-          DOCKER_PASSWORD=%DOCKER_PASSWORD% -t my-scout-cli .
+          #docker build --build-arg DOCKER_USERNAME=%DOCKER_USERNAME%
+          --build-arg DOCKER_PASSWORD=%DOCKER_PASSWORD% -t my-scout-cli .
 
           # Run docker-scout-cli
 
           docker run \
             -e DOCKER_SCOUT_HUB_USER=%DOCKER_USERNAME% \
             -e DOCKER_SCOUT_HUB_PASSWORD=%DOCKER_PASSWORD% \
-            my-scout-cli \
+            docker/scout-cli \
             cves mitin20/hello-world-node:latest --exit-code --only-severity critical,high
     dependencies:
       - DockerBuildPush
