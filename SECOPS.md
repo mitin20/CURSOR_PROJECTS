@@ -13,12 +13,19 @@ docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%
 docker scout cves mitin20/hello-world-node:latest --exit-code --only-severity critical,high
 
 ## Container image
+### Full scan
 docker run \
   -e DOCKER_SCOUT_HUB_USER=%DOCKER_USERNAME% \
   -e DOCKER_SCOUT_HUB_PASSWORD=%DOCKER_PASSWORD% \
   docker/scout-cli \
   cves mitin20/hello-world-node:latest --exit-code --only-severity critical,high
 
+### Quickview
+docker run \
+  -e DOCKER_SCOUT_HUB_USER=%DOCKER_USERNAME% \
+  -e DOCKER_SCOUT_HUB_PASSWORD=%DOCKER_PASSWORD% \
+  docker/scout-cli \
+  cves mitin20/hello-world-node:latest 
 
 # code scan
 
